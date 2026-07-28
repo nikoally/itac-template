@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Variables (do not delete any) % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\XXName}{} % Title Case
+\providecommand{\XXARC}{} % Just a number
+\providecommand{\XXARCName}{} % All Caps
+\ifcsname XXARNum\endcsname\else
+  \edef\XXARNum{\themyAR}
+\fi
+
+
+% Replace any XX with the rec nickname
+\providecommand\XXkWhSavings{--}
+\providecommand\XXkWSavings{--}
+\providecommand\XXFuelSavings{--}
+\providecommand\XXcostSavingskWh{--}
+\providecommand\XXcostSavingskW{--}
+\providecommand\XXCostSavingsFuel{--}
+\providecommand\XXTotalSavings{--}
+\providecommand\XXTotalCost{--}
+\providecommand\XXLaborCost{--}
+\providecommand\XXMaterialCost{--}
+\providecommand\XXPayback{--} 
+
+\providecommand{\XXTableEntry}{ AR-\XXARNum & \XXARC & \XXName & \XXkWhSavings & \XXkWSavings & \XXFuelSavings & \XXAnnualSavings \XXTotalCost & \XXPayback \\
+}
+
+\providecommand{\XXSummary}{
+%%%%% Write your summary below here %%%%%
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam arcu nisl, aliquam id consectetur nec, elementum id magna. Mauris hendrerit porttitor orci nec malesuada. Nunc quis gravida lorem, vel ultrices orci. Mauris et nunc scelerisque, suscipit urna vel, venenatis elit. Morbi vel convallis sem. Suspendisse congue vestibulum turpis, quis porta quam tempus at. Nunc gravida, quam in ornare laoreet, magna dui iaculis ligula, vel viverra magna sem at justo. Maecenas ut congue mauris. Duis eget nisl metus. Integer laoreet accumsan dui, vitae laoreet arcu consequat ac.
+
+%%%%% Write your summary above here %%%%%
+}
+\ifvarsonly \endinput \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Writing Begins Here % 
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\subsection*{AR-\themyAR: \XXName}
+\addcontentsline{toc}{subsection}{AR-\themyAR: \XXName}
+\noindent [ITAC Database ARC: \XXARC \XXARCName]
+
+\subsubsection*{Summary}
+
+\XXSummary % Update the summary variable name here
+
+\begin{table}[H]
+\centering
+\caption{Summary of the savings for AR-\XXARNum: \XXName}
+\label{tab:latefees}
+\begin{tabular}{ccccc}
+\toprule
+Consumption Savings & Demand Savings & Annual Savings & Implement.\ Cost & Payback \\
+\midrule
+\XXkWhSavings & \XXkWSavings & \XXTotalSavings & \XXTotalCost & \XXPayback \\ % Update all variable names (ctrl+f)
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection*{Current Practices and Observations}
+
+\subsubsection*{Recommended Action}
+
+\subsubsection*{Anticipated Savings}
+
+\subsubsection*{Costs and Payback}

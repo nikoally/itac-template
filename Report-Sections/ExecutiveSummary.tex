@@ -1,0 +1,60 @@
+\addcontentsline{toc}{section}{Executive Summary}
+\section*{Executive Summary}
+% The plant is a large Italian company with a historic war era building accounting for 650,000 Square Feet of space that is specialized for various activities in assembling, manufacturing, engineering/industrial operations, shipping, packaging, and administrative functions. With a total of .. personnel working from Monday through Saturday on a three-shift schedule. An annual production of ... million units in cable product from armored cable to optical fiber are sold to various clients in: transmission, telecomm, transportation, construction and other industries. 
+
+
+\addcontentsline{toc}{subsection}{Background}
+\subsection*{Background}
+
+In its current state, the plant consumes a total of \kWhUsage \ of electricity with a demand of \kWUsage, as well as \FuelUsage \ of natural gas annually. This equates to \TotalElecCosts \ annually on electricity, \FuelCosts \ on natural gas and \TotalOtherFee \ on various fees and other charges. The electricity charge includes \kWhCosts \ in electricity consumption (on an average rate of \RatekWh \ per kWh) and \kWCosts \ in electricity demand (on an average rate of \RatekW \ per kW). Table \ref{tab-plant-summary} summarizes the details about the plant. The focus of the recommendations is placed on analyzing and providing recommendations for electrical and natural gas end-use savings. 
+
+\begin{table}[H]
+\caption{Summary card of the plant details}
+\label{tab-plant-summary}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Property} & \textbf{Detail} \\
+\midrule
+Location & \PlantLocation \\ 
+SIC/NAICS & \PlantSIC/\PlantNAICS \\ 
+Square feet & \PlantSquareFeet \\ 
+Personnel & \PlantPersonnel \\
+Operation hours & \begin{tabular}[c]{@{}l@{}}\PlantOperationDays \\ \PlantOperationWeeks \\ \PlantOperationHours \end{tabular}\\
+Energy sources & \PlantEnergySources \\
+Annual sales & \PlantAnnualSales \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\addcontentsline{toc}{subsection}{Recommendations}
+\subsection*{Recommendations}
+
+After performing the on-site audit, recommendations to reduce energy expenditure are summarized in Table \ref{tab-summary-recommendation-exec}, which yields a total implementation cost of \TotalRecImplementation\  with an annual savings of \TotalRecSavings. Total electricity savings total to \TotalkWhSavings\ kWh of consumption and \TotalkWSavings\ kW of demand.  Fuel savings total to \TotalGasSavings\ MMBtu. 
+
+Note that some recommendations have minimal payback periods, while others are larger capital projects that have longer but more significant returns. This assessment also makes the plant eligible to apply for the Industrial Training and Assessment Center Implementation Grants offered by the Department of Energy.
+
+
+%%%%% Make Summary Table %%%%%
+\begin{table}[H]
+\caption{Summary list of recommendations}
+\label{tab-summary-recommendation-exec}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lclcccccc}
+\toprule
+\multirow{2}{*}{Code}  & \multirow{2}{*}{ARC\#}  & \multirow{2}{*}{Description} & \multicolumn{2}{c}{Electricity savings} & Fuel Savings & Annual Savings & Imp. Costs & Payback\\
+ & & & kWh & kW & MMBtu & \$ & \$ & YR\\
+ 
+\midrule
+\MakeTableEntries
+\midrule
+\textbf{Total} & $-$ & $-$& \TotalkWhSavings & \TotalkWSavings & \TotalGasSavings & \TotalRecSavings & \TotalRecImplementation & $-$ \\  
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+%%%%% Make Summary Section %%%%%
+
+\MakeSummary

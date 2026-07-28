@@ -1,0 +1,52 @@
+%---------------------------------------------------
+% You must enter each AR three times. 
+% 1. Enter the \setcounter{myAR}{0} \refstepcounter{myAR} \input{Recommendations/AR} \clearpage in this section
+% 2. Enter \XXTableEntry in the table entry section. This goes on a new row within the existing command. 
+% 3. Enter the summary in the summary section. Template: 
+%\textbf{\textcolor{sec_blue}{AR-\XXARNum: \XXName}} \newline
+% \XXSummary
+%---------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enter Each Recommendaiton Import Statement Here %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Administrative
+\refstepcounter{myAR} \input{Recommendations/AR} \clearpage
+
+%%% Compressed Air
+
+%%% Boilers/Steam
+
+%%% Process Heat
+
+%%% Process Cooling
+
+%%% HVAC/Building Envelope
+
+%%% Onsite Generation
+
+%%% Other
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enter Each Table Entry Here %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\MakeTableEntries}{
+\XXTableEntry
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enter Each Summary Entry Here %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\MakeSummary}{ 
+
+\textbf{\textcolor{sec_blue}{AR-\XXARNum: \XXName}} \newline
+\XXSummary
+
+
+
+}

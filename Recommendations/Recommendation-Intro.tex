@@ -1,0 +1,20 @@
+\hl{Intro text needs to go here}
+
+%%%%% Make Summary Table %%%%%
+\begin{table}[H]
+\caption{Summary list of recommendations}
+\label{tab-summary-recommendation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lclcccccc}
+\toprule
+\multirow{2}{*}{Code}  & \multirow{2}{*}{ARC\#}  & \multirow{2}{*}{Description} & \multicolumn{2}{c}{Electricity savings} & Fuel Savings & Annual Savings & Imp. Costs & Payback\\
+ & & & kWh & kW & MMBtu & \$ & \$ & YR\\
+ 
+\midrule
+\MakeTableEntries
+\midrule
+\textbf{Total} & $-$ & $-$& \TotalkWhSavings & \TotalkWSavings & \TotalGasSavings & \TotalRecSavings & \TotalRecImplementation & $-$ \\  
+\bottomrule
+\end{tabular}%
+}
+\end{table}

@@ -1,0 +1,633 @@
+%%%% utility part %%%%
+\newcommand\RatekWh{\$0.1485}
+\newcommand\RatekW{\$24.48}
+\newcommand\RateGas{\$18.57}
+\newcommand\kWUsage{2,151.20 kW}
+\newcommand\kWhUsage{611,220.00 kWh}
+\newcommand\GasUsage{1,113.23 MMBtu}
+\newcommand\kWCosts{\$52,671.89}
+\newcommand\kWhCosts{\$90,755.73}
+\newcommand\GasCosts{\$20,667.81}
+\newcommand\TotalOtherFee{\$3,062.51}
+\newcommand\TotalSalesTax{\$3,375.33}
+\newcommand\TotalLateFee{\$146.07}
+\newcommand\TotalElecCosts{\$143,427.62}
+
+
+%%% calculation part %%%
+
+%%%% utility part %%%%
+%% cleaning 
+%% kWh
+\StrSubstitute{\kWhCosts}{\$}{}[\kWhCostsWithoutDollar]
+\StrSubstitute{\kWhCostsWithoutDollar}{,}{}[\kWhCostsClean]
+\newcommand\kWhCostFinal{\kWhCostsClean}
+%% kW
+\StrSubstitute{\kWCosts}{\$}{}[\kWCostsWithoutDollar]
+\StrSubstitute{\kWCostsWithoutDollar}{,}{}[\kWCostsClean]
+\newcommand\kWCostFinal{\kWCostsClean}
+%%gas
+\StrSubstitute{\GasCosts}{\$}{}[\GasCostsWithoutDollar]
+\StrSubstitute{\GasCostsWithoutDollar}{,}{}[\GasCostsClean]
+\newcommand\GasCostFinal{\GasCostsClean}
+%%% HH
+% \StrSubstitute{\HHCosts}{\$}{}[\HHCostsWithoutDollar]
+% \StrSubstitute{\HHCostsWithoutDollar}{,}{}[\HHCostsClean]
+% \newcommand\HHCostFinal{\HHCostsClean}
+%% other fees
+\StrSubstitute{\TotalOtherFee}{\$}{}[\TotalotherfeeWithoutDollar]
+\StrSubstitute{\TotalotherfeeWithoutDollar}{,}{}[\TotalotherfeeClean]
+\newcommand\TotalotherfeeFinal{\TotalotherfeeClean}
+
+\FPeval{\GrandUtilityCost}{round(\kWhCostFinal+\kWCostFinal + \GasCostFinal  + \TotalotherfeeFinal,2)}
+
+\newcommand{\TotalUtilityCost}{\$\num[group-separator={,}]{\GrandUtilityCost}}
+
+
+
+
+%%% Main Rec variables %%%%%
+%%% Tax exemption and credit %%%%
+
+\newcommand\TXElecTaxSavings{\$2,677.17}
+\newcommand\TXGasTaxSavings{\$698.16}
+\newcommand\TXTaxCredit{\$1,462.17}
+\newcommand\TXTotalSavings{\$4,837.50}
+
+%%% Switch electricity supplier %%%%
+
+\newcommand\TSTotalSavings{\$6,116.09}
+
+
+%%% Switch gas rate %%%%
+
+\newcommand\SGTotalSavings{\$24.56}
+
+%%%% Pay Late Fee%%%%
+\newcommand\TLTotalCost{-}
+\newcommand\TLTotalSavings{\$146.07}
+\newcommand\TLFee{\$146.07}
+\newcommand\TLImplementation{-}
+\newcommand\TLkWhSavings{-}
+\newcommand\TLkWSavings{-}
+\newcommand\TLPayback{-}
+\newcommand\TLCarbon{-}
+\newcommand\TLIncentive{-}
+
+%%%% Solar System %%%%
+\newcommand\SSkWhSavings{291,594}
+\newcommand\SSkWSavings{-}
+\newcommand\SSTotalCostSavings{\$43,302}
+\newcommand\SSSytemCost{\$420,800}
+\newcommand\SSITC{\$126,240}
+\newcommand\SSDepreciateBase{\$357,680}
+\newcommand\SSTotalTaxSv{\$101,939}
+\newcommand\SSImplementation{\$192,621}
+\newcommand\SSTotalSavings{\$39,506}
+\newcommand\SSOMCost{\$3,796}
+\newcommand\SSPayback{4.88}
+
+%%% HVAC heat pump %%%%
+\newcommand\HVPayback{6.63}
+\newcommand\HPPrice{-}
+\newcommand\HVTotalCost{\$131,510.29}
+\newcommand\HVTotalSavings{\$6,044.95}
+\newcommand\HVTax{\$25,170.25}
+\newcommand\HVIncentive{\$66,237.50}
+\newcommand\HVImplementation{\$40,102.54}
+\newcommand\HVCarbon{18.73}
+\newcommand\HVkWhSavings{-12,716.26}
+\newcommand\HVkWSavings{-17.42}
+\newcommand\HVGasSavings{450.17}
+\newcommand\HVkWhCostSavings{(\$1,888.37)}
+\newcommand\HVkWCostSavings{(\$426.43)}
+\newcommand\HVGasCostSavingss{\$8,359.74}%%%%%%%%%%%%%% % 
+\newcommand\HVRebatesperTon{\$1,500.00}
+\newcommand\ACPayback{14.46}
+
+% %%% Little window unit %%%%
+% \newcommand\LWPayback{28.10}
+% \newcommand\LWTotalCost{\$6,241.00}
+% \newcommand\LWTotalSavings{\$228.10}
+% \newcommand\LWTax{-}
+% \newcommand\LWIncentive{-}
+% \newcommand\LWImplementation{\$5,863.01}
+% \newcommand\LWCarbonSavings{6.28}
+% \newcommand\LWkWhSavings{1,844.91}
+% \newcommand\LWkWSavings{2.53}
+% \newcommand\LWGasSavings{-}
+% \newcommand\LWkWhCostSavings{\$1,844.91}
+% \newcommand\LWkWCostSavings{\$2.53}
+% \newcommand\LWGasCostSavings{-}
+% \newcommand\LWAvoidedCostSavings{\$377.99}
+% \newcommand\LWRebatesperTon{-}
+
+
+%%%% cold intake %%%%
+\newcommand\CITotalCost{\$1,283.19}
+\newcommand\CITotalSavings{\$1,547.16}
+\newcommand\CIImplementation{\$1,283.19}
+\newcommand\CIkWhSavings{8,499.26}
+\newcommand\CIkWSavings{11.64}
+\newcommand\CIkWhCostSavings{\$1,262.14}
+\newcommand\CIkWCostSavings{\$285.02}
+\newcommand\CIPayback{0.83}
+\newcommand\CICarbonSavings{3.40}
+
+%%%%%%%% Stop Compressor Leaks  %%%%%%
+\newcommand\CLkWhSavings{19,814.39}
+\newcommand\CLkWSavings{27.14}
+\newcommand\CLGasSavings{-}
+\newcommand\CLcostSavingskWh{\$2,942.44}
+\newcommand\CLcostSavingskW{\$664.46}
+\newcommand\CLTotalSavings{\$3,606.90}
+\newcommand\CLTotalCost{\$1,900.00}
+\newcommand\CLImplementation{\$1,900.00}
+\newcommand\CLPayback{0.53}
+\newcommand\CLCarbonSavings{1.18}
+
+%%%%%%%% reduce setpoint pressure %%%%%%
+\newcommand\CPkWhSavings{20,635.21}
+\newcommand\CPkWSavings{28.27}
+\newcommand\CPGasSavings{-}
+\newcommand\CPcostSavingskWh{\$3,064.31}
+\newcommand\CPcostSavingskW{\$619.99}
+\newcommand\CPTotalSavings{\$3,756.31}
+\newcommand\CPTotalCost{\$225.00}
+\newcommand\CPImplementation{\$225.00}
+\newcommand\CPPayback{0.06}
+\newcommand\CPCarbonSavings{8.26}
+
+%%%%%%%% Turn off Compressor %%%%%%
+\newcommand\CFkWhSavings{22,344.98}
+\newcommand\CFkWSavings{30.61}
+\newcommand\CFcostSavingskWh{\$3,318.23}
+\newcommand\CFcostSavingskW{\$749.32}
+\newcommand\CFTotalSavings{\$4,067.55}
+\newcommand\CFTotalCost{\$75.00}
+\newcommand\CFImplementation{\$75.00}
+\newcommand\CFPayback{0.02}
+\newcommand\CFCarbonSavings{8.94}
+
+
+
+%%%%%%%% Stop Throttling me boy pressure %%%%%%
+\newcommand\CTkWhSavings{8,017.35}
+\newcommand\CTkWSavings{10.98}
+\newcommand\CTGasSavings{-}
+\newcommand\CTcostSavingskWh{\$1,190.58}
+\newcommand\CTcostSavingskW{\$168.85}
+\newcommand\CTTotalSavings{\$1,459.43}
+\newcommand\CTTotalCost{\$150.00}
+\newcommand\CTImplementation{\$150.00}
+\newcommand\CTPayback{0.10}
+\newcommand\CTCarbonSavings{3.21}
+
+%%%% compressor heat recovery %%%%
+\newcommand\CHTotalCost{\$5,325.00}
+\newcommand\CHTotalSavings{\$1,864.65}
+\newcommand\CHImplementation{\$5,325.70}
+\newcommand\CHkWhSavings{3,774.70}
+\newcommand\CHkWSavings{5.17}
+\newcommand\CHGasSavings{63.41}
+\newcommand\CHPayback{2.86}
+\newcommand\CHCarbonSavings{4.87}
+
+%%%% Smart Thermostat %%%%
+\newcommand\STTotalCost{\$2,830}
+\newcommand\STTotalSavings{\$1,947.48}
+\newcommand\STkWhCostSavings{\$179.56}
+\newcommand\STGasCostSavings{\$1,767.91}
+\newcommand\STImplementation{\$1,980}
+\newcommand\STkWhSavings{1,209.22}
+\newcommand\STkWSavings{-}
+\newcommand\STGasSavings{95.20}
+\newcommand\STCCFSavings{919.83}
+\newcommand\STIncentive{\$850.00}
+\newcommand\STPayback{1.02}
+\newcommand\STCarbonSavings{5.52}
+\newcommand\ThermostatPrice{\$283.00}
+\newcommand\STArea{51,676}
+
+%%%% ENGR Nozzles %%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\ENTotalCost{\$1,804.00}
+\newcommand\ENTotalSavings{\$1,037.17}
+\newcommand\ENImplementation{\$1,804.00}
+\newcommand\ENkWhSavings{5,694.69}
+\newcommand\ENkWSavings{7.80}
+\newcommand\ENGasSavings{-}
+\newcommand\ENPayback{1.74}
+\newcommand\ENCarbonSavings{2.28}
+
+\newcommand\ENNozzleCount{41}
+\newcommand\ENNozzlePrice{\$44}
+\newcommand\ENNozzleTotal{\$1,804}
+
+
+\newcommand\HPWkWhSavings{537.53}
+\newcommand\HPWkWSavings{0.74}
+\newcommand\HPWImplementation{\$1,157.00}
+\newcommand\HPWTotalSavings{\$1,157.00} 
+\newcommand\HPWTotalCost{2,557.00}
+\newcommand\HPWPayback{11.82}
+\newcommand\HPWCarbonSavings{}
+\newcommand\HPWIncentive{\$1,400.00}
+
+
+
+
+% %%% DC to AC Large %%%%
+% \newcommand\BDCTotalCost{\$246.00}
+% \newcommand\BDCTotalSavings{\$263.28}
+% \newcommand\BDCImplementation{\$44,964.00}
+% \newcommand\BDCkWhSavings{2,328.36}
+% \newcommand\BDCkWSavings{3.19}
+% \newcommand\BDCPayback{0.9}
+% \newcommand\BDCCarbon{0.93}
+% \newcommand\BDCIncentive{-}
+% \newcommand\BDCAvoidedCost{\$44,718.00}
+
+
+%%% Hydrogen Generator %%%%
+% \newcommand\HH{3,264.75}
+% \newcommand\HVPrice{\$2,000.00}
+% \newcommand\HHPayback{12.7}
+% \newcommand\HHImplementation{\$350,000.00}
+% \newcommand\HHTotalSavings{\$23,688.58}
+% \newcommand\HHTax{\$49,875.00}
+% \newcommand\HHIncentive{-}
+% \newcommand\HHTotalCost{\$300,125.00}
+% \newcommand\HHCarbonSaings{(23.26)}
+% \newcommand\HHkWhSavings{(58,112.55)}
+% \newcommand\HHkWSavings{(348.68)}
+% \newcommand\HHRentalSavings{\$15,331.35}
+% \newcommand\HHEnergyCostSavings{(\$12,341.26)}
+
+
+
+
+%%% LED %%%%
+
+% \newcommand\LEDTotalSavings{\$2,239.64}
+% \newcommand\LEDkWhSavings{13,217.7}
+% \newcommand\LEDkWSavings{52.86}
+% \newcommand\LEDPayback{0.94}
+% \newcommand\LEDCarbonSavings{5.29}
+% \newcommand\LEDLaborCost{\$1,145.82}
+% \newcommand\LEDDisposalCost{\$1,115}
+% \newcommand\LEDImplementation{\$2,260.82}
+% \newcommand\LEDAnnualSavings{\$2,404.23}
+% \newcommand\LEDRecurringSavings{\$164.59}
+
+
+
+
+%%%% Oven Reschedule %%%%
+% \newcommand\OSTotalCost{\$7,140.00}
+% \newcommand\OSTotalSavings{\$11,359.84}
+% \newcommand\OSImplementation{\$7,140.00}
+% \newcommand\OSkWhSavings{-}
+% \newcommand\OSkWSavings{406.7}
+% \newcommand\OSGasSavings{-}
+% \newcommand\OSPayback{0.63}
+% \newcommand\OSCarbonSavings{-}
+
+
+
+
+%%%% Pump Smart %%%%
+% \newcommand\PSTotalCost{\$37.63}
+% \newcommand\PSTotalSavings{\$125.35}
+% \newcommand\PSImplementation{\$37.63}
+% \newcommand\PSkWhSavings{1497.65}
+% \newcommand\PSkWSavings{6.38}
+% \newcommand\PSGasSavings{-}
+% \newcommand\PSPayback{0.30}
+% \newcommand\PSCarbonSavings{0.60}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%% auto calculate the AR summary table %%%
+
+% Single action Comma and dollar Cleaner 
+% Usage \removeDollarComma{\$5,000}
+\newcommand{\removeDollarComma}[1]{%
+    \StrSubstitute{#1}{\$}{}[\sap]\StrSubstitute{\sap}{,}{} 
+}
+
+
+
+% Double action comma and collar cleaner with defined variable in enviornment 
+% usage \removeDollarCommaT{\$5,000}{VariableName}
+
+\newcommand{\removeDollarCommaT}[2]{%
+    \StrSubstitute{#1}{\$}{}[\sap]\StrSubstitute{\sap}{,}{}[\sap]%
+    \expandafter\newcommand\csname #2\endcsname{\sap}%
+}
+
+
+%% Add Comma and bold text to input number
+% Usage \CommaBoler{1527}
+\newcommand{\CommaBolder}[1]{%
+\textbf{\num[group-separator={,}]{#1}}%
+}
+
+% Add comma and bold text output, requires sinutix package, 
+% Usage \CommaBolder{123456}
+\newcommand{\CommaAdder}[1]{%
+    \num[group-separator={,}]{#1}%
+}
+
+% Add comma and Dollar sign
+% Usage \CommaBolder{123456}
+\newcommand{\CDAdder}[1]{%
+    \$\num[group-separator={,}, round-mode=places, round-precision=2]{#1}%
+}
+
+
+
+%  Calculate dollar value calculation directly 
+% Usage \FPDollar{8000*13}
+\newcommand{\FPDollar}[1]{%
+    \text{\$\num[group-separator={,}, round-mode=places, round-precision=2]{\fpeval{round(#1,2)}}}%
+}
+
+
+%  Calculate dollar value calculation directly and save as new variable
+% Usage\FPDollarVar{5100*3}{myvariable}
+
+\newcommand{\FPDollarVar}[2]{%
+    \edef\sap{\fpeval{round(#1,2)}}%
+    \expandafter\newcommand\csname #2\endcsname{\sap}%
+    \$\num[group-separator={,}, round-mode=places, round-precision=2]{\sap}
+}
+
+
+% \FPDollarVar{5100*3}{myvariable}
+% \myvariable
+
+% \FPDollarVar{\myvariable*3}{somethingelse}
+% Some type of mutation 
+% \myvariable
+% \somethingelse
+
+% Add unit after the end of the calculations
+% Usage \FPEvalUnit{3000*40}{kW}
+\newcommand{\FPEvalUnit}[2]{%
+    \text{\num[group-separator={,}]{\fpeval{round(#1,2)}} \ #2}%
+}
+
+%  Calculate value calculation directly and save as variable 
+% Usage
+
+\newcommand{\FPEValUnitVar}[3]{%
+    \edef\sap{\fpeval{round(#1,2)}}%
+    \expandafter\newcommand\csname #3\endcsname{\sap}%
+    \num[group-separator={,}, round-mode=places, round-precision=2]{\sap}\ #2
+}
+
+
+%%% total kWh savings %%% 
+%%% remove all the commas %%%
+
+
+\StrSubstitute{\HVkWhSavings}{,}{}[\HVkWhSavingsClean]
+\newcommand\HVkWhSavingsFinal{\HVkWhSavingsClean}
+
+% \StrSubstitute{\LWkWhSavings}{,}{}[\LWkWhSavingsClean]
+% \newcommand\LWkWhSavingsFinal{\LWkWhSavingsClean}
+
+\StrSubstitute{\CIkWhSavings}{,}{}[\CIkWhSavingsClean]
+\newcommand\CIkWhSavingsFinal{\CIkWhSavingsClean}
+
+\StrSubstitute{\CPkWhSavings}{,}{}[\CPkWhSavingsClean]
+\newcommand\CPkWhSavingsFinal{\CPkWhSavingsClean}
+
+\StrSubstitute{\CHkWhSavings}{,}{}[\CHkWhSavingsClean]
+\newcommand\CHkWhSavingsFinal{\CHkWhSavingsClean}
+
+\StrSubstitute{\CLkWhSavings}{,}{}[\CLkWhSavingsClean]
+\newcommand\CLkWhSavingsFinal{\CLkWhSavingsClean}
+
+\StrSubstitute{\CTkWhSavings}{,}{}[\CTkWhSavingsClean]
+\newcommand\CTkWhSavingsFinal{\CTkWhSavingsClean}
+
+\StrSubstitute{\CFkWhSavings}{,}{}[\CFkWhSavingsClean]
+\newcommand\CFkWhSavingsFinal{\CFkWhSavingsClean}
+
+\StrSubstitute{\STkWhSavings}{,}{}[\STkWhSavingsClean]
+\newcommand\STkWhSavingsFinal{\STkWhSavingsClean}
+
+% \StrSubstitute{\OSkWhSavings}{,}{}[\OSkWhSavingsClean]
+% \newcommand\OSkWhSavingsFinal{\OSkWhSavingsClean}
+
+\StrSubstitute{\SSkWhSavings}{,}{}[\SSkWhSavingsClean]
+\newcommand\SSkWhSavingsFinal{\SSkWhSavingsClean}
+
+\StrSubstitute{\ENkWhSavings}{,}{}[\ENkWhSavingsClean]
+\newcommand\ENkWhSavingsFinal{\ENkWhSavingsClean}
+
+
+\FPeval{\GrandkWhSavings}{round(\HVkWhSavingsFinal+\CLkWhSavingsFinal+\CIkWhSavingsFinal+\CPkWhSavingsFinal+\CHkWhSavingsFinal+\CTkWhSavingsFinal+\CFkWhSavingsFinal+\STkWhSavingsFinal+\SSkWhSavingsFinal+\ENkWhSavingsFinal,2)}  %%% error message may occur because some of the Recs have no kWh entries but the final result is still correct, in this case, simply delete those variables and no error message
+
+%%% redefine \bfseries since \num cannot detect the normal \bfseries
+\renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+\sisetup{detect-weight,mode=text,group-minimum-digits = 4}
+
+\newcommand{\TotalkWhSavings}{\bfseries\num[group-separator={,}]{\GrandkWhSavings}\mdseries}
+
+
+
+%%% total kW savings %%%
+
+%%% remove all the commas %%%
+\StrSubstitute{\HVkWSavings}{,}{}[\HVkWSavingsClean]
+\newcommand\HVkWSavingsFinal{\HVkWSavingsClean}
+
+% \StrSubstitute{\LWkWSavings}{,}{}[\LWkWSavingsClean]
+% \newcommand\LWkWSavingsFinal{\LWkWSavingsClean}
+
+\StrSubstitute{\CIkWSavings}{,}{}[\CIkWSavingsClean]
+\newcommand\CIkWSavingsFinal{\CIkWSavingsClean}
+
+\StrSubstitute{\CPkWSavings}{,}{}[\CPkWSavingsClean]
+\newcommand\CPkWSavingsFinal{\CPkWSavingsClean}
+
+\StrSubstitute{\CHkWSavings}{,}{}[\CHkWSavingsClean]
+\newcommand\CHkWSavingsFinal{\CHkWSavingsClean}
+
+\StrSubstitute{\CLkWSavings}{,}{}[\CLkWSavingsClean]
+\newcommand\CLkWSavingsFinal{\CLkWSavingsClean}
+
+\StrSubstitute{\CTkWSavings}{,}{}[\CTkWSavingsClean]
+\newcommand\CTkWSavingsFinal{\CTkWSavingsClean}
+
+\StrSubstitute{\CFkWSavings}{,}{}[\CFkWSavingsClean]
+\newcommand\CFkWSavingsFinal{\CFkWSavingsClean}
+
+\StrSubstitute{\STkWSavings}{,}{}[\STkWSavingsClean]
+\newcommand\STkWSavingsFinal{\STkWSavingsClean}
+
+% \StrSubstitute{\OSkWSavings}{,}{}[\OSkWSavingsClean]
+% \newcommand\OSkWSavingsFinal{\OSkWSavingsClean}
+
+\StrSubstitute{\SSkWSavings}{,}{}[\SSkWSavingsClean]
+\newcommand\SSkWSavingsFinal{\SSkWSavingsClean}
+
+\StrSubstitute{\ENkWSavings}{,}{}[\ENkWSavingsClean]
+\newcommand\ENkWSavingsFinal{\ENkWSavingsClean}
+
+
+\FPeval{\GrandkWSavings}{round(\HVkWSavingsFinal+\CLkWSavingsFinal+\CIkWSavingsFinal+\CPkWSavingsFinal+\CHkWSavingsFinal+\CTkWSavingsFinal+\CFkWSavingsFinal+\ENkWSavings,2)} 
+
+%%% error message may occur because some of the Recs have no kW entries but the final result is still correct, in this case, simply delete those variables if this annoys you, and no error message %%%
+
+\newcommand{\TotalkWSavings}{\bfseries\num[group-separator={,}]{\GrandkWSavings}\mdseries}
+
+
+%%% total gas savings %%%
+
+%%% remove all the commas %%%
+%%% in the case, no need %%%
+\FPeval{\GrandGasSavings}{round(\HVGasSavings +  \CHGasSavings + \STGasSavings,2)}  %%% error message may occur because some of the Recs have no gas entries but the final result is still correct, in this case, simply delete those variables and no error message
+
+\newcommand{\TotalGasSavings}{\bfseries\num[group-separator={,}]{\GrandGasSavings}\mdseries}
+
+%%%%% total savings %%%%%%
+%% cleaning, remove dollar signs and commas in between %%%%
+\StrSubstitute{\TXTotalSavings}{\$}{}[\TXTotalSavingsWithoutDollar]
+\StrSubstitute{\TXTotalSavingsWithoutDollar}{,}{}[\TXTotalSavingsClean]
+\newcommand\TXTotalSavingsFinal{\TXTotalSavingsClean}
+
+\StrSubstitute{\TSTotalSavings}{\$}{}[\TSTotalSavingsWithoutDollar]
+\StrSubstitute{\TSTotalSavingsWithoutDollar}{,}{}[\TSTotalSavingsClean]
+\newcommand\TSTotalSavingsFinal{\TSTotalSavingsClean}
+
+\StrSubstitute{\TLTotalSavings}{\$}{}[\TLTotalSavingsWithoutDollar]
+\StrSubstitute{\TLTotalSavingsWithoutDollar}{,}{}[\TLTotalSavingsClean]
+\newcommand\TLTotalSavingsFinal{\TLTotalSavingsClean}
+
+\StrSubstitute{\HVTotalSavings}{\$}{}[\HVTotalSavingsWithoutDollar]
+\StrSubstitute{\HVTotalSavingsWithoutDollar}{,}{}[\HVTotalSavingsClean]
+\newcommand\HVTotalSavingsFinal{\HVTotalSavingsClean}
+
+\StrSubstitute{\CLTotalSavings}{\$}{}[\CLTotalSavingsWithoutDollar]
+\StrSubstitute{\CLTotalSavingsWithoutDollar}{,}{}[\CLTotalSavingsClean]
+\newcommand\CLTotalSavingsFinal{\CLTotalSavingsClean}
+
+\StrSubstitute{\CITotalSavings}{\$}{}[\CITotalSavingsWithoutDollar]
+\StrSubstitute{\CITotalSavingsWithoutDollar}{,}{}[\CITotalSavingsClean]
+\newcommand\CITotalSavingsFinal{\CITotalSavingsClean}
+
+\StrSubstitute{\CPTotalSavings}{\$}{}[\CPTotalSavingsWithoutDollar]
+\StrSubstitute{\CPTotalSavingsWithoutDollar}{,}{}[\CPTotalSavingsClean]
+\newcommand\CPTotalSavingsFinal{\CPTotalSavingsClean}
+
+\StrSubstitute{\CHTotalSavings}{\$}{}[\CHTotalSavingsWithoutDollar]
+\StrSubstitute{\CHTotalSavingsWithoutDollar}{,}{}[\CHTotalSavingsClean]
+\newcommand\CHTotalSavingsFinal{\CHTotalSavingsClean}
+
+\StrSubstitute{\CTTotalSavings}{\$}{}[\CTTotalSavingsWithoutDollar]
+\StrSubstitute{\CTTotalSavingsWithoutDollar}{,}{}[\CTTotalSavingsClean]
+\newcommand\CTTotalSavingsFinal{\CTTotalSavingsClean}
+
+\StrSubstitute{\CFTotalSavings}{\$}{}[\CFTotalSavingsWithoutDollar]
+\StrSubstitute{\CFTotalSavingsWithoutDollar}{,}{}[\CFTotalSavingsClean]
+\newcommand\CFTotalSavingsFinal{\CFTotalSavingsClean}
+
+\StrSubstitute{\STTotalSavings}{\$}{}[\STTotalSavingsWithoutDollar]
+\StrSubstitute{\STTotalSavingsWithoutDollar}{,}{}[\STTotalSavingsClean]
+\newcommand\STTotalSavingsFinal{\STTotalSavingsClean}
+
+\StrSubstitute{\ENTotalSavings}{\$}{}[\ENTotalSavingsWithoutDollar]
+\StrSubstitute{\ENTotalSavingsWithoutDollar}{,}{}[\ENTotalSavingsClean]
+\newcommand\ENTotalSavingsFinal{\ENTotalSavingsClean}
+
+\StrSubstitute{\SSTotalSavings}{\$}{}[\SSTotalSavingsWithoutDollar]
+\StrSubstitute{\SSTotalSavingsWithoutDollar}{,}{}[\SSTotalSavingsClean]
+\newcommand\SSTotalSavingsFinal{\SSTotalSavingsClean}
+
+
+
+\FPeval{\GrandSavings}{round(\HVTotalSavingsFinal +\CLTotalSavingsFinal + \CITotalSavingsFinal + \CPTotalSavingsFinal + \CHTotalSavingsFinal + \CTTotalSavingsFinal + \CFTotalSavingsFinal +\STTotalSavingsFinal + \ENTotalSavingsFinal + \SSTotalSavingsFinal +\TXTotalSavingsFinal+
+\TSTotalSavingsFinal + \TLTotalSavingsFinal, 2)} 
+
+% %%% redefine \bfseries since \num cannot detect the normal \bfseries
+% \renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+% \sisetup{detect-weight,mode=text,group-minimum-digits = 4}
+
+\newcommand{\TotalRecSavings}{\bfseries\$\num[group-separator={,}]{\GrandSavings}\mdseries}
+
+
+
+%%%%% total cost %%%%%%
+%% cleaning, remove dollar signs and commas in between %%%%
+\StrSubstitute{\HVImplementation}{\$}{}[\HVImplementationWithoutDollar]
+\StrSubstitute{\HVImplementationWithoutDollar}{,}{}[\HVImplementationClean]
+\newcommand\HVImplementationFinal{\HVImplementationClean}
+
+\StrSubstitute{\CLImplementation}{\$}{}[\CLImplementationWithoutDollar]
+\StrSubstitute{\CLImplementationWithoutDollar}{,}{}[\CLImplementationClean]
+\newcommand\CLImplementationFinal{\CLImplementationClean}
+
+\StrSubstitute{\CIImplementation}{\$}{}[\CIImplementationWithoutDollar]
+\StrSubstitute{\CIImplementationWithoutDollar}{,}{}[\CIImplementationClean]
+\newcommand\CIImplementationFinal{\CIImplementationClean}
+
+\StrSubstitute{\CPImplementation}{\$}{}[\CPImplementationWithoutDollar]
+\StrSubstitute{\CPImplementationWithoutDollar}{,}{}[\CPImplementationClean]
+\newcommand\CPImplementationFinal{\CPImplementationClean}
+
+\StrSubstitute{\CHImplementation}{\$}{}[\CHImplementationWithoutDollar]
+\StrSubstitute{\CHImplementationWithoutDollar}{,}{}[\CHImplementationClean]
+\newcommand\CHImplementationFinal{\CHImplementationClean}
+
+\StrSubstitute{\CTImplementation}{\$}{}[\CTImplementationWithoutDollar]
+\StrSubstitute{\CTImplementationWithoutDollar}{,}{}[\CTImplementationClean]
+\newcommand\CTImplementationFinal{\CTImplementationClean}
+
+\StrSubstitute{\CFImplementation}{\$}{}[\CFImplementationWithoutDollar]
+\StrSubstitute{\CFImplementationWithoutDollar}{,}{}[\CFImplementationClean]
+\newcommand\CFImplementationFinal{\CFImplementationClean}
+
+\StrSubstitute{\STImplementation}{\$}{}[\STImplementationWithoutDollar]
+\StrSubstitute{\STImplementationWithoutDollar}{,}{}[\STImplementationClean]
+\newcommand\STImplementationFinal{\STImplementationClean}
+
+\StrSubstitute{\ENImplementation}{\$}{}[\ENImplementationWithoutDollar]
+\StrSubstitute{\ENImplementationWithoutDollar}{,}{}[\ENImplementationClean]
+\newcommand\ENImplementationFinal{\ENImplementationClean}
+
+\StrSubstitute{\SSImplementation}{\$}{}[\SSImplementationWithoutDollar]
+\StrSubstitute{\SSImplementationWithoutDollar}{,}{}[\SSImplementationClean]
+\newcommand\SSImplementationFinal{\SSImplementationClean}
+
+% \StrSubstitute{\PSImplementation}{\$}{}[\PSImplementationWithoutDollar]
+% \StrSubstitute{\PSImplementationWithoutDollar}{,}{}[\PSImplementationClean]
+% \newcommand\PSImplementationFinal{\PSImplementationClean}
+
+\FPeval{\GrandImplementation}{round(\HVImplementationFinal + \CLImplementationFinal + \CIImplementationFinal + \CPImplementationFinal + \CHImplementationFinal + \STImplementationFinal + \ENImplementationFinal + \SSImplementationFinal + \CTImplementationFinal + \CFImplementationFinal,2)} 
+
+% %%% redefine \bfseries since \num cannot detect the normal \bfseries
+% \renewrobustcmd{\bfseries}{\fontseries{b}\selectfont}
+% \sisetup{detect-weight,mode=text,group-minimum-digits = 4}
+
+\newcommand{\TotalRecImplementation}{\bfseries\$\num[group-separator={,}]{\GrandImplementation}\mdseries}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

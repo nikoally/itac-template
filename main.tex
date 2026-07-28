@@ -1,0 +1,142 @@
+\documentclass[letterpaper,11pt,amsart,table,x11names]{article} 
+
+\input{settings/pkg}
+\input{settings/envr}
+\urlstyle{sf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section Title Formatting %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\section}      
+{\color{sec_blue}\normalfont\Large\bfseries}
+{\color{sec_blue}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{sec_blue}\normalfont\large\bfseries}
+{\color{sec_blue}\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\color{sec_blue}\normalfont\normalsize\bfseries}
+{\color{sec_blue}\thesubsubsection}{1em}{}
+
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead{}
+\fancyfoot[L]{Report No. xxxx}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%
+% Import Variables %
+%%%%%%%%%%%%%%%%%%%%
+\newcounter{myAR}
+
+\input{Variables/Report-Variables}
+\input{Variables/Utility-Analysis-Variables}
+
+%%%%%%%%%%%%%%
+% Title Page %
+%%%%%%%%%%%%%%
+
+\input{./Static-Elements/title_page}
+
+\date{}
+
+\thispagestyle{empty}
+
+\setstretch{1.08}   % set line spacing to 1.08
+
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1} 
+\setcounter{equation}{0} \setcounter{figure}{0}
+
+\pagestyle{fancy}
+
+%%%%% PREFACE %%%%%
+\section*{PREFACE}
+\phantomsection
+This report was prepared as part of an assessment conducted under the Industrial Training and Assessment Centers (ITAC) program, a national initiative supported by the U.S. Department of Energy (DOE) through the Office of Critical Minerals and Energy Innovation (CMEI). The ITAC program consists of 36 centers across the United States, each working with manufacturers to identify opportunities for energy innovation, waste reduction, and productivity improvements.
+
+These one-day assessments are typically performed through site visits conducted by teams of engineering faculty and students, who collect operational information, evaluate energy systems, and identify potential improvement opportunities. The program also serves an important educational mission, providing hands-on training for students.
+
+Recommendations in this report are based on observations, measurements, and discussions with facility personnel during the assessment visit. \textbf{As the assessment is generally conducted during a single-day site visit, the analysis presented in this report represents a snapshot of facility operations and may not capture every operational condition or opportunity for improvement.}
+
+The ITAC team appreciates the cooperation and assistance provided by facility personnel during the assessment process. The insights and operational knowledge shared during the visit are critical to the development of meaningful recommendations. \vspace{20 pt}
+
+
+
+
+\section*{DISCLAIMER}
+\phantomsection
+The contents of this report are offered as guidance only. The analysis and recommendations contained herein represent the best effort of the Industrial Training and Assessment Center (ITAC) team at the University of Connecticut, based on the information available at the time of the assessment. However, \textbf{no warranty or guarantee is made regarding the accuracy, completeness, or suitability of the data, calculations, or recommendations presented in this report.}
+
+This report includes use of artificial intelligence (AI) tools to assist with data collection, analysis, report writing, and reviewing recommendations. All technical analysis, calculations, and recommendations were reviewed and validated by the ITAC team before inclusion in this report.
+
+The recommendations provided are intended to highlight potential opportunities for energy savings, cost reduction, and operational improvements. They are not intended to serve as detailed engineering designs or final implementation plans. \textbf{Facilities are encouraged to consult qualified engineering professionals, equipment vendors, or consultants when detailed engineering design or implementation support is required.}
+
+The views and conclusions expressed in this report do not necessarily reflect the official policies of the U.S. Department of Energy (DOE) or participating universities. \textbf{Any mention of trade names or commercial products does not constitute endorsement or recommendation for use.}
+
+
+\newpage
+\tableofcontents
+
+\newpage
+{%
+    \let\oldnumberline\numberline%
+    \renewcommand{\numberline}{\figurename~\oldnumberline}%
+    \listoffigures%
+}
+
+\newpage
+{%
+    \let\oldnumberline\numberline%
+    \renewcommand{\numberline}{\tablename~\oldnumberline}%
+    \listoftables%
+}
+
+\newpage
+
+%%% Import Variables %%%
+\newif\ifvarsonly
+\varsonlytrue
+\input{Recommendations/all}
+\varsonlyfalse
+
+%%%%% EXECUTIVE SUMMARY %%%%%
+
+\input{Report-Sections/ExecutiveSummary}
+
+
+%%%%% Report Intro Sections %%%%%
+\clearpage\input{Report-Sections/Introduction}
+\clearpage\input{Report-Sections/Process-Summary}
+\clearpage\input{Report-Sections/Best-Practices}
+\clearpage\input{Report-Sections/Major-Consumers}
+\clearpage\input{Report-Sections/Utility_Analysis.tex}
+\clearpage\input{Report-Sections/CyberSecurity.tex}
+
+%%%%% Recommendations %%%%%%
+\clearpage\section{Recommendations}
+
+\input{Recommendations/Recommendation-Intro}
+\clearpage\input{Recommendations/all}
+
+%%%%%% Summary %%%%%%
+\clearpage\input{Static-Elements/Summary}
+
+\clearpage
+
+%%%%% Appendicies %%%%%
+\begin{appendices}
+
+\clearpage\input{Appendicies/Major-Systems-App}
+\clearpage\input{Appendicies/Detailed-Calculations}
+\clearpage\input{Appendicies/AAR}
+\clearpage\input{Appendicies/Cyber-Survey-Answers}
+
+\end{appendices}
+
+
+\end{document}

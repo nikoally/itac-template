@@ -12,6 +12,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus metus dolo
 
 Mauris pulvinar ultrices arcu sit amet fermentum. Donec suscipit leo vitae magna pellentesque, non porta risus consectetur. Curabitur vitae dapibus lacus. Donec semper elementum enim vitae malesuada. Donec a libero cursus, luctus tortor et, sagittis ante. Sed eget feugiat erat. Sed efficitur nunc nec dui auctor maximus. Aliquam sodales eu tortor at vehicula. Pellentesque ac elit posuere, vulputate ex sed, consectetur mauris. Vivamus consequat vel velit sed faucibus. Mauris urna justo, porta id vulputate a, mattis eu orci. Nullam at velit odio. Maecenas aliquam nunc sed malesuada luctus. Ut dolor diam, maximus eget pharetra nec, consectetur id mi.
 
+Table \ref{tab-plant-summary} summarizes the details about the plant. 
+
+\begin{table}[H]
+\caption{Summary card of the plant details}
+\label{tab-plant-summary}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Property} & \textbf{Detail} \\
+\midrule
+Location & \PlantLocation \\ 
+SIC/NAICS & \PlantSIC/\PlantNAICS \\ 
+Square feet & \PlantSquareFeet \\ 
+Personnel & \PlantPersonnel \\
+Operation hours & \begin{tabular}[c]{@{}l@{}}\PlantOperationDays \\ \PlantOperationWeeks \\ \PlantOperationHours \end{tabular}\\
+Energy sources & \PlantEnergySources \\
+Annual sales & \PlantAnnualSales \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 %%%%% AERIAL IMAGE %%%%%
 \begin{figure}[!h]
     \centering
